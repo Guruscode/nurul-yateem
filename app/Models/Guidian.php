@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Guidian extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+            'user_id',
             'gender',
             'phone_number',
             'dob',
@@ -35,6 +37,10 @@ class Guidian extends Model
         return self::select('guidians.*')
                     ->orderBy('id', 'asc')
                     ->get();
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
 

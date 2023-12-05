@@ -27,12 +27,10 @@ class GuidianController extends Controller
         }
     }
 
-    public function createOrphans()
-    {
-        return view("guidian.addOrphan");
-    }
+
     
-    public function registerSave (Request $request) {
+    public function registerSave (Request $request, $userId) {
+       
         Validator::make($request->all(), [
             'gender' => 'required',
             'phone_number' => 'required',
@@ -53,8 +51,9 @@ class GuidianController extends Controller
             'other_information'=> '',
             'affidavit'=> 'required',
             ])->validate();
-
+            
                 Guidian::create([
+                 'user_id' => $userId,
                 'gender' => $request->gender,
                 'phone_number' => $request->phone_number,
                 'dob' => $request->dob,
@@ -94,44 +93,9 @@ class GuidianController extends Controller
             return view("guidian.create");
         }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function createOrphans()
     {
-        //
+        return view("guidian.addOrphan");
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+   
 }

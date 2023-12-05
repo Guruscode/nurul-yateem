@@ -71,7 +71,7 @@ Route::middleware('sponsor')->group(function () {
 Route::middleware('guidian')->group(function () {
     Route::get('guidian/dashboard', [App\Http\Controllers\DashboardController::class,'dashboard'])->name('guidian/dashboard'); 
     Route::get('/guidian', [App\Http\Controllers\GuidianController::class,'index'])->name('guidian'); 
-    Route::get('guidian/create', [App\Http\Controllers\GuidianController::class,'create'])->name('guidian/create'); 
+    Route::get('guidian/create/', [App\Http\Controllers\GuidianController::class,'create'])->name('create-guardian');
     Route::get('guidian/profile', [App\Http\Controllers\GuidianController::class,'profile'])->name('guidian/profile'); 
     Route::post('saveregister', [App\Http\Controllers\GuidianController::class,'registerSave'])->name('save.guidian.register');
     Route::get('guidian/create/orphans', [App\Http\Controllers\GuidianController::class,'createOrphans'])->name('guidian/create/orphans'); 

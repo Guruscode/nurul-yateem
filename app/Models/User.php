@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Guidian;
 
 class User extends Authenticatable
 {
@@ -58,5 +60,9 @@ class User extends Authenticatable
                     ->where('user_type','=',2)
                     ->orderBy('id', 'asc')
                     ->get();
+    }
+    public function guardian()
+    {
+        return $this->hasOne(Guidian::class);
     }
 }

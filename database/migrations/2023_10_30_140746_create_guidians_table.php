@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('guidians', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained(); // Foreign key linking to users table
             $table->string('gender');
             $table->string('phone_number');
             $table->string('dob');
