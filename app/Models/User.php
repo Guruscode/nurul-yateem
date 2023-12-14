@@ -63,6 +63,6 @@ class User extends Authenticatable
     }
     public function guardian()
     {
-        return $this->hasOne(Guidian::class);
+        return $this->hasMany(Guidian::class);
     }
 }

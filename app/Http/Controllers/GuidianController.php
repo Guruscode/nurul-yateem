@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Guidian;
+use App\Models\Ophans;
 use  Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -20,16 +21,14 @@ class GuidianController extends Controller
      */
     public function create()
     {
-        if (Guidian::count() > 0) {
-            return redirect()->route('guidian/dashboard');
-        } else {
+      
             return view("guidian.create");
-        }
+        
     }
 
 
     
-    public function registerSave (Request $request, $userId) {
+    public function registerSave (Request $request) {
        
         Validator::make($request->all(), [
             'gender' => 'required',
@@ -51,9 +50,9 @@ class GuidianController extends Controller
             'other_information'=> '',
             'affidavit'=> 'required',
             ])->validate();
-            
+            $user = auth()->user();
                 Guidian::create([
-                 'user_id' => $userId,
+                'user_id' => $user->id,
                 'gender' => $request->gender,
                 'phone_number' => $request->phone_number,
                 'dob' => $request->dob,
@@ -79,6 +78,7 @@ class GuidianController extends Controller
     }
     public function profile()
     {
+        
         return view("guidian.profile");
     }
 
@@ -96,6 +96,46 @@ class GuidianController extends Controller
     public function createOrphans()
     {
         return view("guidian.addOrphan");
+    }
+    public function saveOrphanRegister (Request $request) {
+        Validator::make($request->all(), [
+            'firstname' => 'required',
+            'midname' => 'required',
+            'lastname' => 'required',
+            'gender' => 'required',
+            'dob' => 'required',
+            'profile_img' => 'required',
+            'state_of_origin' => 'required',
+            'local_government' => 'required',
+            'school_status' => 'required',
+            'school_name' =>    'required',
+            'school_phone_number' => 'required',
+            'school_email' => 'required',
+            'class' => 'required',
+            'guidian_affidavit' => 'required',
+            'other_information' => '',
+            ])->validate();
+            // $user = auth()->user();
+                Ophans::create([
+                // 'user_id' => $user->id,
+                'firstname' => $request->firstname,
+                'midname' => $request->midname,
+                'lastname' => $request->lastname,
+                'gender' => $request->gender,
+                'dob' => $request->dob,
+                'profile_img' => $request->profile_img,
+                'state_of_origin' =>  $request->state_of_origin,
+                'local_government' =>  $request->local_government,
+                'school_status' =>  $request->school_status,
+                'school_name' => $request->school_name,
+                'school_phone_number' =>  $request->school_phone_number,
+                'school_email' =>  $request->school_email,
+                'class' =>  $request->class,
+                'guidian_affidavit' =>  $request->guidian_affidavit,
+                'other_information' =>  $request->other_information,
+            ]);
+            // return redirect()->route('guidian/profile')->with('success','');
+            return redirect()->route('guidian.success')->with('success','');
     }
    
 }

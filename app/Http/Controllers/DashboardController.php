@@ -19,8 +19,10 @@ class DashboardController extends Controller
         }
         else if (Auth::user()->user_type == 3) 
         {
-            $profile = Guidian::all();
-            return view('guidian.dashboard', compact( 'profile'));
-        }
+
+                    return view('guidian.dashboard');
+                
+                }
+           
     }
 }

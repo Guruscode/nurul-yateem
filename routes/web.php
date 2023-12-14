@@ -75,6 +75,7 @@ Route::middleware('guidian')->group(function () {
     Route::get('guidian/profile', [App\Http\Controllers\GuidianController::class,'profile'])->name('guidian/profile'); 
     Route::post('saveregister', [App\Http\Controllers\GuidianController::class,'registerSave'])->name('save.guidian.register');
     Route::get('guidian/create/orphans', [App\Http\Controllers\GuidianController::class,'createOrphans'])->name('guidian/create/orphans'); 
+    Route::post('saveOrphanRegister', [App\Http\Controllers\GuidianController::class,'saveOrphanRegister'])->name('save.Orphan.register');
     Route::get('guidian/success', [App\Http\Controllers\GuidianController::class,'success'])->name('guidian.success'); 
 });
 

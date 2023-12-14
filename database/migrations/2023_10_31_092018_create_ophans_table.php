@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('state_of_origin');
             $table->string('local_government');
             $table->string('school_status');
+            $table->string('school_name');
             $table->string('school_phone_number');
             $table->string('school_email');
             $table->string('class');

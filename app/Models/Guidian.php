@@ -38,6 +38,7 @@ class Guidian extends Model
                     ->orderBy('id', 'asc')
                     ->get();
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);
