@@ -93,6 +93,19 @@ class GuidianController extends Controller
             return view("guidian.create");
         }
     }
+
+    public function thankyou() {
+        if (Guidian::count() > 0) {
+            if ( !request()->is('/success') && url()->previous() !=  url('guidian/create') ) {
+                return redirect()->to('guidian/dashboard'); //Send them somewhere else
+            } else {
+                return view("guidian.thankyou");
+            }
+        } else {
+            return view("guidian.create");
+        }
+    }
+    
     public function createOrphans()
     {
         return view("guidian.addOrphan");
@@ -135,7 +148,7 @@ class GuidianController extends Controller
                 'other_information' =>  $request->other_information,
             ]);
             // return redirect()->route('guidian/profile')->with('success','');
-            return redirect()->route('guidian.success')->with('success','');
+            return redirect()->route('guidian.thankyou')->with('success','');
     }
    
 }

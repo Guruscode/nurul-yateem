@@ -19,9 +19,12 @@ class AdminController extends Controller
      */
     public function guidianlist()
     {
-        $data1['getRecord'] = User::getGuidian();
-        $data['getRecords'] = Guidian::getGuidian();
-        return view("admin.guidian.index",$data,$data1);
+        $data1['getRecord'] = User::where('user_type','=',3)
+            ->get();
+        // $data['getRecords'] = Guidian::getGuidian();
+      
+        
+        return view("admin.guidian.index",$data1);
     }
     public function sponsorlist()
     {
@@ -30,7 +33,7 @@ class AdminController extends Controller
     }
     public function orphanlist()
     {
-        $data['getRecord'] = User::getSponsor();
+        $data['getRecord'] = User::getOphans();
         return view("admin.orphan.index", $data);
     }
     
@@ -43,6 +46,10 @@ class AdminController extends Controller
       
         return view("admin.guidian.create", );
     }
+    public function guardianuser()
+    {      
+        return view("admin.guidian.create_guardian_user", );
+    }
     public function  createOrphans()
     {
         return view("admin.guidian.createorphan");
@@ -51,6 +58,25 @@ class AdminController extends Controller
     public function sponsorcreate()
     {
         return view("admin.sponsor.create");
+    }
+    public function usersave(Request $request) 
+    {
+        Validator::make($request->all(), [
+            "firstname"=> "required",
+            "lastname"=> "required",
+            "email"=> "required|email",
+            "password"=> "required|confirmed",
+            "user_type"=> "required"
+            ])->validate();
+
+            User::create([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'user_type' =>  $request->user_type,
+            ]);  return redirect()->route('admin/guidian/create')->with('success','');
+          
     }
     public function registerSave(Request $request) 
     {
@@ -74,7 +100,9 @@ class AdminController extends Controller
             'other_information'=> '',
             'affidavit'=> 'required',
             ])->validate();
-                Guidian::create([
+            $user = auth()->user();
+            Guidian::create([
+            'user_id' => $user->id,
                 'gender' => $request->gender,
                 'phone_number' => $request->phone_number,
                 'dob' => $request->dob,
@@ -93,6 +121,7 @@ class AdminController extends Controller
                 'marital_status' =>  $request->marital_status,
                 'other_information' =>  $request->other_information,
                 'affidavit' =>  $request->affidavit,
+                
 
             ]);
             return redirect()->route('admin/guidian/profile')->with('success','');

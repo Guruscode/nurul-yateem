@@ -49,10 +49,11 @@ class User extends Authenticatable
 
     static public function getGuidian () {
 
-        return self::select('users.*')
-                    ->where('user_type','=',3)
-                    ->orderBy('id', 'asc')
-                    ->get();
+        // return self::select('users.*')
+        //             ->where('user_type','=',3)
+        //             ->orderBy('id', 'asc')
+        //             ->get();
+        return User::get();
     }
     static public function getSponsor () {
 
@@ -61,7 +62,14 @@ class User extends Authenticatable
                     ->orderBy('id', 'asc')
                     ->get();
     }
-    public function guardian()
+    static public function getOphans () {
+
+        return self::select('ophans.*')                  
+                    ->orderBy('id', 'asc')
+                    ->get();
+    }
+    
+    public function guardians()
     {
         return $this->hasMany(Guidian::class);
     }

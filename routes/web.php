@@ -52,7 +52,11 @@ Route::middleware('admin')->group(function () {
     Route::post('sponsorsave', [App\Http\Controllers\AdminController::class,'sponsorSave'])->name('sponsor.register.save');
     Route::get('admin/guidian', [App\Http\Controllers\AdminController::class,'guidianlist'])->name('admin/guidian'); 
     Route::get('admin/guidian/create', [App\Http\Controllers\AdminController::class,'guidiancreate'])->name('admin/guidian/create'); 
+    Route::get('admin/guidian/guardianuser', [App\Http\Controllers\AdminController::class,'guardianuser'])->name('admin/guidian/guardianuser'); 
+    
     Route::get('admin/guidian/profile', [App\Http\Controllers\AdminController::class,'profile'])->name('admin/guidian/profile'); 
+    
+    Route::post('usersave', [App\Http\Controllers\AdminController::class,'usersave'])->name('guidian.user.save');
     Route::post('registersave', [App\Http\Controllers\AdminController::class,'registerSave'])->name('guidian.register.save');
     Route::get('admin/orphan', [App\Http\Controllers\AdminController::class,'orphanlist'])->name('admin/orphan'); 
     Route::get('admin/create/orphans', [App\Http\Controllers\AdminController::class,'createOrphans'])->name('admin/create/orphans'); 
@@ -77,6 +81,8 @@ Route::middleware('guidian')->group(function () {
     Route::get('guidian/create/orphans', [App\Http\Controllers\GuidianController::class,'createOrphans'])->name('guidian/create/orphans'); 
     Route::post('saveOrphanRegister', [App\Http\Controllers\GuidianController::class,'saveOrphanRegister'])->name('save.Orphan.register');
     Route::get('guidian/success', [App\Http\Controllers\GuidianController::class,'success'])->name('guidian.success'); 
+    Route::get('guidian/thankyou', [App\Http\Controllers\GuidianController::class,'thankyou'])->name('guidian.thankyou'); 
+
 });
 
 
