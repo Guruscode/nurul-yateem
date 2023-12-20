@@ -75,7 +75,7 @@ class AdminController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'user_type' =>  $request->user_type,
-            ]);  return redirect()->route('admin/guidian/create')->with('success','');
+            ]);  return redirect()->route('admin/guidian/create')->with('success',''); 
           
     }
     public function registerSave(Request $request) 
@@ -85,7 +85,7 @@ class AdminController extends Controller
             'phone_number' => 'required',
             'dob' => 'required',
             'alt_phn_number' => 'required',
-            'profile_img' => 'required',
+            'profile_img' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'employment_status' => 'required',
             'annual_income' => 'required',
             'nature_of_occupation' => 'required',
@@ -98,7 +98,7 @@ class AdminController extends Controller
             'id_expiry_date'=> 'required',
             'marital_status'=> 'required',
             'other_information'=> '',
-            'affidavit'=> 'required',
+            'affidavit'=> 'required|image|mimes:jpeg,png,jpg|max:2048',
             ])->validate();
             $user = auth()->user();
             Guidian::create([
@@ -154,19 +154,19 @@ class AdminController extends Controller
             'firstname' => 'required',
             'midname' => 'required',
             'lastname' => 'required',
-            'gender' => $request->gender,
-            'dob' => $request->dob,
-            'alt_phn_number' => $request->alt_phn_number,
-            'profile_img' => $request->profile_img,
-            'employment_status' =>  $request->employment_status,
-            'annual_income' =>  $request->annual_income,
-            'nature_of_occupation' =>  $request->nature_of_occupation,
-            'employer_name' =>  $request->employer_name,
-            'employer_address' =>  $request->employer_address,
-            'employer_phone' =>  $request->employer_phone,
-            'mean_of_identity' =>  $request->mean_of_identity,
-            'identity_number' =>  $request->identity_number,
-            'id_issue_date' =>  $request->id_issue_date,
+            'gender' => 'required',
+            'dob' =>'required',
+            'alt_phn_number' =>'required',
+            'profile_img' => 'required',
+            'employment_status' =>  'required',
+            'annual_income' =>'required',
+            'nature_of_occupation' =>  'required',
+            'employer_name' => 'required',
+            'employer_address' => 'required',
+            'employer_phone' => 'required',
+            'mean_of_identity' =>  'required',
+            'identity_number' =>  'required',
+            'id_issue_date' => 'required',
             'id_expiry_date' =>  $request->id_expiry_date,
             'marital_status' =>  $request->marital_status,
             'other_information' =>  $request->other_information,

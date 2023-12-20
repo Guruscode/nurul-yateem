@@ -50,9 +50,9 @@
                 <div class="col-sm-10">
                     <select name="gender" class="form-control @error('gender')is-invalid @enderror" aria-label="Default select example">
                         <option selected>--------</option>
-                        <option value="1">Female</option>
-                        <option value="2">Male</option>
-                        <option value="3">Others</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="MALE">Male</option>
+                        <option value="OTHERS">Others</option>
                     </select>
                     @error('gender')
                     <span class="invalid-feedback">{{$message}}</span>
@@ -113,8 +113,8 @@
                 <div class="col-sm-10">
                     <select name="school_status" class="form-control @error('school_status')is-invalid @enderror" aria-label="Default select example">
                         <option selected>--------</option>
-                        <option value="1">Active</option>
-                        <option value="2">Inactive</option>
+                        <option value="ACTIVE">Active</option>
+                        <option value="INACTIVE">Inactive</option>
                     </select>
                     @error('school_status')
                     <span class="invalid-feedback">{{$message}}</span>

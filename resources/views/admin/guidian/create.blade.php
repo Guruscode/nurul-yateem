@@ -8,7 +8,8 @@
     <h3 class="mb-3">Bio Data</h3>
     <div class="tab-pane mt-4" id="settings">
         <form class="form-horizontal" action=" {{ route('guidian.register.save')}}" method="POST">
-            @csrf @if ($errors->any())
+            @csrf 
+            @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error )

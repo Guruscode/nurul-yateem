@@ -32,10 +32,11 @@
                 <label for="inputEmail" class="col-sm-2 col-form-label">Gender</label>
                 <div class="col-sm-10">
                     <select name="gender" class="form-control @error('gender')is-invalid @enderror" aria-label="Default select example">
+                
                         <option selected>--------</option>
-                        <option value="1">Female</option>
-                        <option value="2">Male</option>
-                        <option value="3">Others</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="MALE">Male</option>
+                        <option value="OTHERS">Others</option>
                     </select>
                     @error('gender')
                     <span class="invalid-feedback">{{$message}}</span>
@@ -83,9 +84,9 @@
                 <div class="col-sm-10">
                     <select name="employment_status" class="form-control @error('employment_status')is-invalid @enderror" aria-label="Default select example">
                         <option selected>--------</option>
-                        <option value="1">Employed</option>
-                        <option value="2">Unemployed</option>
-                        <option value="3">Selfemployed</option>
+                        <option value="EMPLOYED">Employed</option>
+                        <option value="UNEMPLOYED">Unemployed</option>
+                        <option value="SELF_EMPLOYED">Selfemployed</option>
                     </select>
                     @error('employment_status')
                     <span class="invalid-feedback">{{$message}}</span>
@@ -138,15 +139,16 @@
                     @enderror
                 </div>
             </div>
+          
             <div class="form-group row">
                 <label for="number" class="col-sm-2 col-form-label">Means of Identity</label>
                 <div class="col-sm-10">
                     <select name="mean_of_identity" class="form-control @error('mean_of_identity')is-invalid @enderror" aria-label="Default select example">
                         <option selected>--------</option>
-                        <option value="1">National Id</option>
-                        <option value="2">Voters Card</option>
-                        <option value="3">Driver Licence</option>
-                        <option value="3">International Passport</option>
+                        <option value="NATIONAL_ID">National Id</option>
+                        <option value="VOTERS_CARD">Voters Card</option>
+                        <option value="DRIVER_LICENCE">Driver Licence</option>
+                        <option value="INTERNATIONAL_PASSWORD">International Passport</option>
                         @error('mean_of_identity')
                         <span class="invalid-feedback">{{$message}}</span>
                         @enderror
@@ -184,10 +186,11 @@
                 <label for="number" class="col-sm-2 col-form-label">Marrital Status</label>
                 <div class="col-sm-10">
                     <select name="marital_status" class="form-control @error('marital_status')is-invalid @enderror" aria-label="Default select example">
+                
                         <option selected>--------</option>
-                        <option value="1">Single</option>
-                        <option value="2">Married</option>
-                        <option value="3">Complicated</option>
+                        <option value="SINGLE">Single</option>
+                        <option value="MARRIED">Married</option>
+                        <option value="COMPLICATED">Complicated</option>
                     </select>
                     @error('marital_status')
                     <span class="invalid-feedback">{{$message}}</span>

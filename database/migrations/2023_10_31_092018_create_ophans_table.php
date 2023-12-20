@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('midname');
             $table->string('lastname');
-            $table->string('gender');
+            $table->enum('gender', ['FEMALE', 'MALE', 'OTHERS']);
             $table->string('dob');
             $table->string('profile_img');
             $table->string('state_of_origin');
             $table->string('local_government');
-            $table->string('school_status');
+            $table->enum('school_status', ['ACTIVE','INACTIVE']);
             $table->string('school_name');
             $table->string('school_phone_number');
             $table->string('school_email');
